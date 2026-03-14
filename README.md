@@ -1,6 +1,6 @@
-# Benchmarking Large Language Models for Text Input in Chinese and Japanese
+# Benchmarking Large Language Models for Chinese and Japanese IMEs: Phonetic-to-Character Generation and Textual Error Correction
 
-This repository contains the data, code, evaluation results, and the camera-ready LaTeX source for the paper **"Benchmarking Large Language Models for Text Input in Chinese and Japanese"** (LREC 2026).
+This repository contains the data, code, evaluation results, and the camera-ready LaTeX source for the paper **"Benchmarking Large Language Models for Chinese and Japanese IMEs: Phonetic-to-Character Generation and Textual Error Correction"** (LREC 2026).
 
 ## Overview
 
@@ -33,7 +33,7 @@ If you use our datasets or code, please cite our LREC 2026 paper:
 
 ```bibtex
 @inproceedings{zou2026benchmarking,
-  title     = {Benchmarking Large Language Models for Text Input in Chinese and Japanese},
+  title     = {Benchmarking Large Language Models for Chinese and Japanese IMEs: Phonetic-to-Character Generation and Textual Error Correction},
   author    = {Zou, Yuchun and Lee, Tedd and Fan, Xiaodi and Li, Jun},
   booktitle = {Proceedings of the Language Resources and Evaluation Conference (LREC)},
   year      = {2026}
