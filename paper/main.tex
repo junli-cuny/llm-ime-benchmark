@@ -652,11 +652,15 @@ Our evaluation is based on publicly available language resources for both Chines
 \cmidrule(lr){2-3}
 & Chinese Sentences (Phonetic-to-Character Generation) & {SIGHAN 2015 Bake-off Corpus} \citep{tseng2015introduction}. A collection of 4,440 sentences used for the \textit{sentence generation task}. \\
 \cmidrule(lr){2-3}
-& Chinese Sentences (Error Correction) & {CSCD-IME Corpus} \citep{nghuyong2024cscdime}. A balanced corpus used as the basis for creating the \textit{Chinese Error Corpus}. \\
+& Chinese Sentences (Error Correction Base) & {CSCD-IME Corpus} \citep{nghuyong2024cscdime}. A balanced corpus used as the basis for creating the \textit{Chinese Phonetic Error Dataset}. \\
+\cmidrule(lr){2-3}
+& Chinese Phonetic Error Dataset & \textbf{Ours} \citep{my_chinese_error_dataset}. 3,502 sentences with injected Pinyin and semantic errors, used for the \textit{Chinese phonetic error correction task}. \\
 \midrule
 {Japanese} & Japanese Words & {Yomichan JLPT Vocab} \citep{stephenmk2024yomichan}. A vocabulary dataset used for the \textit{word generation task}. \\
 \cmidrule(lr){2-3}
-& Japanese Sentences & {Snow Simplified Corpus} \citep{snow2024simplified}. A corpus of >10,000 sentences used for the \textit{sentence generation task} and as the base for \textit{Romaji error injection}. \\
+& Japanese Sentences & {Snow Simplified Corpus} \citep{snow2024simplified}. A corpus of >10,000 sentences used for the \textit{sentence generation task} and as the base for the \textit{Japanese Phonetic Error Dataset}. \\
+\cmidrule(lr){2-3}
+& Japanese Phonetic Error Dataset & \textbf{Ours} \citep{my_japanese_error_dataset}. >10,000 sentences with injected Romaji errors, used for the \textit{Japanese phonetic error correction task}. \\
 \cmidrule(lr){2-3}
 & Japanese Character Errors & {Kyoto University JWTD} \citep{kyoto2024japanesetexts}. A pre-annotated corpus used for the \textit{Japanese character correction task}. \\
 \bottomrule
