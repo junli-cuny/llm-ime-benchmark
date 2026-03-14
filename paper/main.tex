@@ -1329,7 +1329,6 @@ Figures~\ref{fig:cec_pinyin_noise} and \ref{fig:jec_char_noise} are crucial for 
 
 For Chinese pinyin error correction (Figure~\ref{fig:cec_pinyin_noise}), the accuracy plot demonstrates the remarkable resilience of top-tier LLMs. Models like GPT-4o and Gemini 2.0 Flash maintain a very high SimHash score even when faced with 4 or 5 errors, with only a marginal drop in performance. This indicates a strong ability to infer user intent from heavily corrupted phonetic input. In contrast, the performance of smaller offline models like Llama3-8B and Mistral-7B starts lower and degrades more quickly, suggesting they are more easily thrown off by multiple errors. The completion time plot shows that for most models, the time taken does not significantly increase with the number of errors, suggesting that the core computational cost is tied to processing the sentence length, not the difficulty of the correction.
 
-For Japanese character error correction (Figure~\ref{fig:jec_char_noise}), the trends are similar. The elite performance of GPT-4o is visually striking, with its accuracy remaining almost flat and near-perfect regardless of the number of errors. The {OpenNMT} baseline, while strong with 1-2 errors, shows a more noticeable decline in performance as the noise level increases, highlighting the superior robustness of the top LLM's contextual reasoning. This visual evidence strongly supports the conclusion that large-scale LLMs are not just more accurate at error correction, but also more reliable under challenging conditions.
 
 \begin{figure*}[h!]
     \centering
@@ -1359,6 +1358,9 @@ For Japanese character error correction (Figure~\ref{fig:jec_char_noise}), the t
     \caption{Average text similarity (SimHash) vs. word length for Japanese Word Generation, broken down by primary script type: Kanji (top), Hiragana (middle), and Katakana (bottom).}
     \label{fig:jwg_script}
 \end{figure*}
+
+For Japanese character error correction (Figure~\ref{fig:jec_char_noise}), the trends are similar. The elite performance of GPT-4o is visually striking, with its accuracy remaining almost flat and near-perfect regardless of the number of errors. The {OpenNMT} baseline, while strong with 1-2 errors, shows a more noticeable decline in performance as the noise level increases, highlighting the superior robustness of the top LLM's contextual reasoning. This visual evidence strongly supports the conclusion that large-scale LLMs are not just more accurate at error correction, but also more reliable under challenging conditions.
+
 \subsection{Japanese Word Generation by Script Type}
 
 Figure~\ref{fig:jwg_script} provides a unique and insightful breakdown of model performance on Japanese word generation based on the primary script of the target word: Kanji, Hiragana, or Katakana. This analysis isolates the specific challenges within Japanese text input.
