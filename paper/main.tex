@@ -51,7 +51,6 @@
 
 %\title{Benchmarking Large Language Models for Text Input in Chinese and Japanese} 
 \title{Benchmarking Large Language Models for Chinese and Japanese IMEs: Phonetic-to-Character Generation and Textual Error Correction}
-%TODO: use this title if change is allowed
 
 \name{Yuchun Zou$^{\ast}$, Tedd Lee$^{\S}$\thanks{Tedd Lee was supported by the CUNY Career Launch program.}, Xiaodi Fan$^{\ddagger}$, Jun Li$^{\dagger}$}
 
@@ -120,7 +119,7 @@ Both Chinese and Japanese are characterized by a high degree of homophony, makin
 \subsection{The Challenge of User Input Errors}
 Beyond inherent linguistic ambiguity, a robust IME must also handle a wide range of input errors. These errors can be broadly categorized, starting with {typographical errors}, i.e., simple mistakes in keystrokes such as typing \textit{``xianzia''} instead of \textit{``xianzai''} in Pinyin. Next are {phonetic errors}, which involve using an incorrect Pinyin or Romaji spelling due to a misunderstanding of the pronunciation. Finally, and most challenging for traditional systems, are {orthographic/semantic errors}. These occur when a user selects the wrong character from the IME's candidate list of homophones, even if the phonetic input was correct, resulting in a phonetically valid but semantically incorrect sentence.
 
-Traditional IMEs attempt to address these challenges using mechanisms based on edit distance or simple phonetic similarity rules \citep{wagner1974string, jurafsky2000speech, gao2002improving}. While effective for minor typos, they falter when faced with complex errors, particularly orthographic/semantic mistakes, as they fundamentally lack deep semantic understanding. A traditional IME is unlikely to detect that a user has chosen a contextually inappropriate character if that character is a valid homophone. This dual challenge of resolving deep linguistic ambiguity and correcting multi-layered user errors necessitates models with sophisticated contextual reasoning capabilities, which is precisely the strength of Large Language Models.
+Traditional IMEs attempt to address these challenges using mechanisms based on edit distance or simple phonetic similarity rules \citep{wagner1974string, jurafsky2000speech, gao2002improving}. While effective for minor typos, they falter when faced with complex errors, particularly orthographic/semantic mistakes, as they fundamentally lack deep semantic understanding. A traditional IME is unlikely to detect that a user has chosen a contextually inappropriate character if that character is a valid homophone. This dual challenge of resolving deep linguistic ambiguity and correcting multi-layered user errors necessitates models with sophisticated contextual reasoning capabilities, which is precisely the strength of LLMs.
 
 \section{Methodology}
 \label{sec:methodology}
@@ -224,7 +223,7 @@ For all error correction tasks, each model (LLM or baseline) was provided with a
 \section{Results and Analysis}
 \label{sec:results}
 
-In this section, we present a focused analysis of our benchmark results, highlighting key performance trade-offs in phonetic-to-character generation and textual error correction. As established in our methodology, our analysis concentrates on an analysis subset of models to clearly illustrate the primary findings, while the appendix reports the full model set.
+In this section, we present a focused analysis of our benchmark results, highlighting key performance trade-offs. As established in our methodology, our analysis concentrates on an analysis subset of models to clearly illustrate the primary findings, while the appendix reports the full model set.
 
 \subsection{Evaluation Metrics}
 
@@ -532,9 +531,7 @@ The development and deployment of advanced IMEs based on LLMs carry potential et
 
 While our benchmark provides a comprehensive evaluation of LLMs for IME tasks, we acknowledge several limitations that define the scope of our findings and offer clear avenues for future research.
 
-\textbf{No Human-Subject Evaluation Yet:} Our evaluation in this version is fully automatic. Although this enables broad and consistent comparison across many models, it does not directly measure user-facing outcomes such as perceived fluency, correction burden, and usability in real typing workflows. 
-%TODO: check this before final version
-%To address this gap, we are developing an IME prototype driven by the benchmark findings to collect real user interaction data. If development is completed before the camera-ready deadline, we will release this prototype and include an initial human-evaluation report.
+\textbf{No Human-Subject Evaluation Yet:} Our evaluation in this version is fully automatic. Although this enables broad and consistent comparison across many models, it does not directly measure user-facing outcomes such as perceived fluency, correction burden, and usability in real typing workflows.
 
 \textbf{Focus on End-to-End Models:} Our study evaluates LLMs in an end-to-end capacity, directly converting phonetic input to final text. We did not evaluate a pipeline approach where a fast baseline generates initial candidates and an LLM serves as a secondary re-ranker or corrector. While such a pipeline is a valid alternative, we hypothesize that it may be suboptimal due to critical information loss (the LLM would not see the original phonetic input) and potentially higher cascaded latency. Future work could explicitly compare these end-to-end vs. pipeline architectures.
 
@@ -543,8 +540,6 @@ While our benchmark provides a comprehensive evaluation of LLMs for IME tasks, w
 \textbf{API and Model Variability:} The performance of online LLMs accessed via APIs is subject to factors beyond our experimental control, including network latency and unannounced model updates. The results presented here represent a snapshot in time, and performance metrics, particularly for completion time, may vary.
 
 \textbf{Scope of Evaluated Models:} While we evaluated a broad range of models, the LLM landscape is evolving at an extremely rapid pace. The performance hierarchy established in this work may change as new, more efficient, or more powerful models are released. Our benchmark framework, however, is designed to be extensible for evaluating these future models.
-% \textbf{Scope of Evaluated Models:} While we evaluated a broad range of models, the LLM landscape is evolving at an extremely rapid pace. The performance hierarchy established in this work may change as new, more efficient, or more powerful models are released. In particular, we plan to extend the Japanese model set with strong language-specific models (e.g., LLM-jp and Swallow) in the final version, with full results reported in the appendix. Our benchmark framework is designed to be extensible for these updates.
-% TODO: add data for LLM-jp and Swallow
 
 \textbf{Hardware and Efficiency Generalization:} Our efficiency analysis for offline models was conducted on a high-performance NVIDIA A100 GPU. These completion times may not directly translate to the performance on consumer-grade hardware or on-device mobile processors, where computational and memory constraints are far more significant. Future work should include profiling these models on a wider range of hardware to better assess their practical viability for on-device IME applications.
 
@@ -572,7 +567,7 @@ The benchmark datasets are derived from the publicly available language resource
 
 % \end{document}
 
-\clearpage
+%\clearpage
 \appendix
 % \section{Experimental Setup Details}
 % \section{Appendices}
@@ -654,13 +649,13 @@ Our evaluation is based on publicly available language resources for both Chines
 \cmidrule(lr){2-3}
 & Chinese Sentences (Error Correction Base) & {CSCD-IME Corpus} \citep{nghuyong2024cscdime}. A balanced corpus used as the basis for creating the \textit{Chinese Phonetic Error Dataset}. \\
 \cmidrule(lr){2-3}
-& Chinese Phonetic Error Dataset & \textbf{Ours} \citep{my_chinese_error_dataset}. 3,502 sentences with injected Pinyin and semantic errors, used for the \textit{Chinese phonetic error correction task}. \\
+& Chinese Phonetic Error Dataset & {Ours} \citep{my_chinese_error_dataset}. 3,502 sentences with injected Pinyin and semantic errors, used for the \textit{Chinese phonetic error correction task}. \\
 \midrule
 {Japanese} & Japanese Words & {Yomichan JLPT Vocab} \citep{stephenmk2024yomichan}. A vocabulary dataset used for the \textit{word generation task}. \\
 \cmidrule(lr){2-3}
 & Japanese Sentences & {Snow Simplified Corpus} \citep{snow2024simplified}. A corpus of >10,000 sentences used for the \textit{sentence generation task} and as the base for the \textit{Japanese Phonetic Error Dataset}. \\
 \cmidrule(lr){2-3}
-& Japanese Phonetic Error Dataset & \textbf{Ours} \citep{my_japanese_error_dataset}. >10,000 sentences with injected Romaji errors, used for the \textit{Japanese phonetic error correction task}. \\
+& Japanese Phonetic Error Dataset & {Ours} \citep{my_japanese_error_dataset}. >10,000 sentences with injected Romaji errors, used for the \textit{Japanese phonetic error correction task}. \\
 \cmidrule(lr){2-3}
 & Japanese Character Errors & {Kyoto University JWTD} \citep{kyoto2024japanesetexts}. A pre-annotated corpus used for the \textit{Japanese character correction task}. \\
 \bottomrule
@@ -1299,65 +1294,66 @@ This section provides a visual analysis of key performance trends observed in ou
 
 \subsection{Performance vs. Input Length in Generation}
 
-Figures~\ref{fig:csg_wl} and \ref{fig:jsg_wl} illustrate how model accuracy (SimHash) and efficiency (completion time) scale with increasing sentence length. These plots provide a clear visual representation of the scalability challenges inherent in text generation.
-
-For Chinese sentence generation (Figure~\ref{fig:csg_wl}), the accuracy plot reveals a key finding: the performance of top-tier online LLMs like the GPT and Gemini families remains remarkably stable and high, regardless of sentence length. This demonstrates their robust ability to handle long-range contextual dependencies. In contrast, the accuracy of baselines like Pinyin2Hanzi DAG and smaller offline models like Llama3-8B is not only lower overall but also shows more variance, struggling to maintain coherence on longer sentences. The time plot shows a generally linear increase in latency with sentence length for most models, which is expected. However, the slope of this increase varies significantly. Models like Gemini 2.0 Flash exhibit a very gentle slope, indicating excellent scalability, whereas older or larger models like GPT-4 show a much steeper increase, suggesting higher computational overhead for longer inputs.
-
-For Japanese sentence generation (Figure~\ref{fig:jsg_wl}), the trends are similar but even more pronounced. The performance gap between leading LLMs and the macOS Romaji baseline widens as sentences become longer, highlighting the LLMs' superior ability to leverage broader context. The time plot is particularly revealing: the macOS Romaji baseline, while fast on short sentences, shows a steep increase in completion time for longer inputs, eventually becoming slower than efficient LLMs like Gemini 2.0 Flash. This indicates that the computational complexity of the traditional IME's search or disambiguation algorithm does not scale as well as the parallel processing of a modern LLM.
-
 \begin{figure*}[h!]
     \centering
-    \includegraphics[width=\textwidth]{../figures/csg_textsim_wl.pdf}\\
+    \includegraphics[width=.99\textwidth]{../figures/csg_textsim_wl.pdf}\\
     \vspace{2mm}
-    \includegraphics[width=\textwidth]{../figures/csg_time_wl.pdf}
+    \includegraphics[width=.99\textwidth]{../figures/csg_time_wl.pdf}
     \caption{Average text similarity (SimHash) and completion time vs. sentence length for Chinese Sentence Generation.}
     \label{fig:csg_wl}
 \end{figure*}
 
 \begin{figure*}[h!]
     \centering
-    \includegraphics[width=\textwidth]{../figures/jsg_textsim_wl.pdf}\\
+    \includegraphics[width=.99\textwidth]{../figures/jsg_textsim_wl.pdf}\\
     \vspace{2mm}
-    \includegraphics[width=\textwidth]{../figures/jsg_time_wl.pdf}
+    \includegraphics[width=.99\textwidth]{../figures/jsg_time_wl.pdf}
     \caption{Average text similarity (SimHash) and completion time vs. sentence length for Japanese Sentence Generation.}
     \label{fig:jsg_wl}
 \end{figure*}
 
-\subsection{Performance vs. Noise Level in Error Correction}
-
-Figures~\ref{fig:cec_pinyin_noise} and \ref{fig:jec_char_noise} are crucial for assessing model robustness, showing how performance degrades as the number of errors in the source text increases.
-
-For Chinese pinyin error correction (Figure~\ref{fig:cec_pinyin_noise}), the accuracy plot demonstrates the remarkable resilience of top-tier LLMs. Models like GPT-4o and Gemini 2.0 Flash maintain a very high SimHash score even when faced with 4 or 5 errors, with only a marginal drop in performance. This indicates a strong ability to infer user intent from heavily corrupted phonetic input. In contrast, the performance of smaller offline models like Llama3-8B and Mistral-7B starts lower and degrades more quickly, suggesting they are more easily thrown off by multiple errors. The completion time plot shows that for most models, the time taken does not significantly increase with the number of errors, suggesting that the core computational cost is tied to processing the sentence length, not the difficulty of the correction.
-
-
 \begin{figure*}[h!]
     \centering
-    \includegraphics[width=\textwidth]{../figures/cec_pinyin_textsim_noise.pdf}\\
+    \includegraphics[width=.99\textwidth]{../figures/cec_pinyin_textsim_noise.pdf}\\
     \vspace{2mm}
-    \includegraphics[width=\textwidth]{../figures/cec_pinyin_time_noise.pdf}
+    \includegraphics[width=.99\textwidth]{../figures/cec_pinyin_time_noise.pdf}
     \caption{Average text similarity (SimHash) and completion time vs. number of errors for Chinese Pinyin Error Correction.}
     \label{fig:cec_pinyin_noise}
 \end{figure*}
 
 \begin{figure*}[h!]
     \centering
-    \includegraphics[width=\textwidth]{../figures/jec_char_textsim_noise.pdf}\\
+    \includegraphics[width=.99\textwidth]{../figures/jec_char_textsim_noise.pdf}\\
     \vspace{2mm}
-    \includegraphics[width=\textwidth]{../figures/jec_char_time_noise.pdf}
+    \includegraphics[width=.99\textwidth]{../figures/jec_char_time_noise.pdf}
     \caption{Average text similarity (SimHash) and completion time vs. number of errors for Japanese Character Error Correction.}
     \label{fig:jec_char_noise}
 \end{figure*}
 
 \begin{figure*}[h!]
     \centering
-    \includegraphics[width=\textwidth]{../figures/jwg_kanji_textsim_wl.pdf} \\
+    \includegraphics[width=.99\textwidth]{../figures/jwg_kanji_textsim_wl.pdf} \\
     \vspace{2mm}
-    \includegraphics[width=\textwidth]{../figures/jwg_hira_textsim_wl.pdf} \\
+    \includegraphics[width=.99\textwidth]{../figures/jwg_hira_textsim_wl.pdf} \\
     \vspace{2mm}
-    \includegraphics[width=\textwidth]{../figures/jwg_kata_textsim_wl.pdf}
+    \includegraphics[width=.99\textwidth]{../figures/jwg_kata_textsim_wl.pdf}
     \caption{Average text similarity (SimHash) vs. word length for Japanese Word Generation, broken down by primary script type: Kanji (top), Hiragana (middle), and Katakana (bottom).}
     \label{fig:jwg_script}
 \end{figure*}
+
+
+Figures~\ref{fig:csg_wl} and \ref{fig:jsg_wl} illustrate how model accuracy (SimHash) and efficiency (completion time) scale with increasing sentence length. These plots provide a clear visual representation of the scalability challenges inherent in text generation.
+
+For Chinese sentence generation (Figure~\ref{fig:csg_wl}), the accuracy plot reveals a key finding: the performance of top-tier online LLMs like the GPT and Gemini families remains remarkably stable and high, regardless of sentence length. This demonstrates their robust ability to handle long-range contextual dependencies. In contrast, the accuracy of baselines like Pinyin2Hanzi DAG and smaller offline models like Llama3-8B is not only lower overall but also shows more variance, struggling to maintain coherence on longer sentences. The time plot shows a generally linear increase in latency with sentence length for most models, which is expected. However, the slope of this increase varies significantly. Models like Gemini 2.0 Flash exhibit a very gentle slope, indicating excellent scalability, whereas older or larger models like GPT-4 show a much steeper increase, suggesting higher computational overhead for longer inputs.
+
+For Japanese sentence generation (Figure~\ref{fig:jsg_wl}), the trends are similar but even more pronounced. The performance gap between leading LLMs and the macOS Romaji baseline widens as sentences become longer, highlighting the LLMs' superior ability to leverage broader context. The time plot is particularly revealing: the macOS Romaji baseline, while fast on short sentences, shows a steep increase in completion time for longer inputs, eventually becoming slower than efficient LLMs like Gemini 2.0 Flash. This indicates that the computational complexity of the traditional IME's search or disambiguation algorithm does not scale as well as the parallel processing of a modern LLM.
+
+
+\subsection{Performance vs. Noise Level in Error Correction}
+
+Figures~\ref{fig:cec_pinyin_noise} and \ref{fig:jec_char_noise} are crucial for assessing model robustness, showing how performance degrades as the number of errors in the source text increases.
+
+For Chinese pinyin error correction (Figure~\ref{fig:cec_pinyin_noise}), the accuracy plot demonstrates the remarkable resilience of top-tier LLMs. Models like GPT-4o and Gemini 2.0 Flash maintain a very high SimHash score even when faced with 4 or 5 errors, with only a marginal drop in performance. This indicates a strong ability to infer user intent from heavily corrupted phonetic input. In contrast, the performance of smaller offline models like Llama3-8B and Mistral-7B starts lower and degrades more quickly, suggesting they are more easily thrown off by multiple errors. The completion time plot shows that for most models, the time taken does not significantly increase with the number of errors, suggesting that the core computational cost is tied to processing the sentence length, not the difficulty of the correction.
 
 For Japanese character error correction (Figure~\ref{fig:jec_char_noise}), the trends are similar. The elite performance of GPT-4o is visually striking, with its accuracy remaining almost flat and near-perfect regardless of the number of errors. The {OpenNMT} baseline, while strong with 1-2 errors, shows a more noticeable decline in performance as the noise level increases, highlighting the superior robustness of the top LLM's contextual reasoning. This visual evidence strongly supports the conclusion that large-scale LLMs are not just more accurate at error correction, but also more reliable under challenging conditions.
 
